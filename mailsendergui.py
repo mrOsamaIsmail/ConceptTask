@@ -1,3 +1,4 @@
+from MailHandler import MailHandler
 
 import tkinter as tk
 from tkinter import ttk
@@ -62,10 +63,30 @@ class gui():
         self.window.mainloop()
 
     def SendMail(self):
-        pass
         
+        #The mail addresses and password
+        sender_address = self.senderMailE.get()
+        #default sender 
+        if(sender_address ==""):
+            sender_address = 'debuggerconcept@gmail.com'
+        
+        sender_pass =  self.senderPass.get()
+        #default password
+        if(sender_pass ==""):
+            sender_pass= 'c_951753'
         
 
+        mail_subject = self.MailSubject.get()
+        mail_content = self.MailContent.get()
+        receiver_address = self.receiverMail.get()
+
+        mail = MailHandler(sender_address,sender_pass,receiver_address)
+        mail.constructMail(mail_subject,mail_content)
+        
+        self.resultLABEl.config(text = mail.senderMail())
+        self.ClearInputs()
+        
+        
 Gui = gui()
 Gui.MainLoop()
 
