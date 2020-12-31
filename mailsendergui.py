@@ -75,6 +75,7 @@ class gui():
         if(sender_pass ==""):
             sender_pass= 'c_951753'
         
+        self.error = ""
 
         mail_subject = self.MailSubject.get()
         mail_content = self.MailContent.get()
@@ -82,11 +83,23 @@ class gui():
 
         mail = MailHandler(sender_address,sender_pass,receiver_address)
         mail.constructMail(mail_subject,mail_content)
+
+        self.error = mail.SendMail()
         
-        self.resultLABEl.config(text = mail.senderMail())
-        self.ClearInputs()
+        self.resultLABEl.config(text = self.error)
+        if(("ERROR" in self.error)):
+            return
+        else:
+            self.ClearInputs()
         
         
+    def ClearInputs(self):
+        self.senderMailE.delete(0, 'end')
+        self.MailContent.delete(0, 'end')
+        self.MailSubject.delete(0, 'end')
+        self.receiverMail.delete(0, 'end')
+        self.senderPass.delete(0, 'end')
+
 Gui = gui()
 Gui.MainLoop()
 
