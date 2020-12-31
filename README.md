@@ -1,6 +1,16 @@
 # A Gmail Mail Sender in Python
 ### This is a Concept of programming task
 
+## Content
+- Mail handler Class (MailHandler.py)
+- The command line implementation and executable (mail sender cli.py)
+- The graphical user interface implementation and executable (mailsendergui.py)
+
+# Executables
+
+  - A Command Line Interface
+  - A Graphical User Interface
+
 # Team Members
 
 |Name|ID|
